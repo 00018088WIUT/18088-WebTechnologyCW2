@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Vocabulary List</h1>
+    <a href="/vocabulary/new" class="btn btn-primary">Add New Word</a>
+</div>
+
+<div class="row">
+    <% vocabularies.forEach(function(vocabulary) { %>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%= vocabulary.word %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        <%= vocabulary.language %> - <%= vocabulary.category %>
+                    </h6>
+                    <p class="card-text">
+                        <strong>Translation:</strong> <%= vocabulary.translation %><br>
+                        <% if (vocabulary.exampleSentence) { %>
+                            <strong>Example:</strong> <%= vocabulary.exampleSentence %><br>
+                        <% } %>
+                        <strong>Difficulty:</strong> 
+                        <span class="badge bg-<%= 
+                            vocabulary.difficulty === 'Beginner' ? 'success' : 
+                            vocabulary.difficulty === 'Intermediate' ? 'warning' : 'danger' 
+                        %>">
+                            <%= vocabulary.difficulty %>
+                        </span>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <a href="/vocabulary/<%= vocabulary._id %>/edit" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <form action="/vocabulary/<%= vocabulary._id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this word?')">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    Last reviewed: <%= new Date(vocabulary.lastReviewed).toLocaleDateString() %>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+<% if (vocabularies.length === 0) { %>
+    <div class="alert alert-info">
+        No vocabulary items found. <a href="/vocabulary/new">Add your first word</a>!
+    </div>
+<% } %> 

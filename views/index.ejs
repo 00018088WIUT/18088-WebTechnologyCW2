@@ -1,0 +1,30 @@
+<%
+    content = `
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 class="display-4 mb-4">Welcome to Language Learning App</h1>
+                <p class="lead mb-4">Start building your vocabulary and improve your language skills!</p>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Features</h5>
+                        <ul class="list-unstyled">
+                            <li>Create and manage vocabulary lists</li>
+                            <li>Add example sentences and cultural notes</li>
+                            <li>Track your learning progress</li>
+                            <li>Practice with flashcards</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 col-md-6 mx-auto">
+                    <a href="/vocabulary" class="btn btn-primary btn-lg">View Vocabulary</a>
+                    <a href="/vocabulary/new" class="btn btn-outline-primary btn-lg">Add New Word</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+%>
+<%- include('layout', { title: 'Home' }) %> 

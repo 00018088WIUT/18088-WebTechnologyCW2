@@ -1,0 +1,23 @@
+<%
+    content = `
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h1 class="display-4 text-danger mb-4">Oops!</h1>
+                        <p class="lead mb-4">Something went wrong.</p>
+                        ${typeof error !== 'undefined' ? `
+                            <div class="alert alert-danger">
+                                <p class="mb-0">${error.message || error}</p>
+                            </div>
+                        ` : ''}
+                        <a href="/" class="btn btn-primary mt-4">Return to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+%>
+<%- include('layout', { title: 'Error' }) %> 
